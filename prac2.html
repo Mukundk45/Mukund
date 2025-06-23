@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login/Register</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: url('i1.jpg') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 15px;
+      width: 320px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: #3498db;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .toggle {
+      margin-top: 15px;
+      text-align: center;
+      color: #fff;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login Form -->
+  <div class="form-container" id="loginForm">
+    <h2>Login</h2>
+    <input type="text" placeholder="Username" id="loginUsername">
+    <input type="password" placeholder="Password" id="loginPassword">
+    <button onclick="login()">Login</button>
+    <div class="toggle" onclick="showRegister()">New user? Register here</div>
+  </div>
+
+  <!-- Registration Form -->
+  <div class="form-container hidden" id="registerForm">
+    <h2>Register</h2>
+    <input type="text" placeholder="Full Name" id="regName">
+    <input type="text" placeholder="Username" id="regUsername">
+    <input type="password" placeholder="Password" id="regPassword">
+    <button onclick="register()">Register</button>
+    <div class="toggle" onclick="showLogin()">Already have an account? Login</div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    function showRegister() {
+      document.getElementById('loginForm').classList.add('hidden');
+      document.getElementById('registerForm').classList.remove('hidden');
+    }
+
+    function showLogin() {
+      document.getElementById('registerForm').classList.add('hidden');
+      document.getElementById('loginForm').classList.remove('hidden');
+    }
+
+    function login() {
+      let user = document.getElementById('loginUsername').value;
+      let pass = document.getElementById('loginPassword').value;
+      if (user && pass) {
+        alert('Logged in!');
+      } else {
+        alert('Please fill in all fields.');
+      }
+    }
+
+    function register() {
+      let name = document.getElementById('regName').value;
+      let user = document.getElementById('regUsername').value;
+      let pass = document.getElementById('regPassword').value;
+      if (name && user && pass) {
+        alert('Registered successfully!');
+        showLogin();
+      } else {
+        alert('Please fill in all fields.');
+      }
+    }
+  </script>
+
+</body>
+</html>
